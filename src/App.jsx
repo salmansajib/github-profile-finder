@@ -1,9 +1,10 @@
 import './App.css';
+import GitHubProfileFinder from './components/GitHubProfileFinder';
 
 function App() {
   return (
-    <div className='app'>
-      <h1 className='text-3xl'>Hello</h1>
+    <div className='app min-h-dvh'>
+      <GitHubProfileFinder />
     </div>
   );
 }
