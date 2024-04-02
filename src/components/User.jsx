@@ -14,9 +14,9 @@ const User = ({ user }) => {
   // console.log(createdDate);
 
   return (
-    <div>
-      <div>
-        <img src={avatar_url} alt='user image' />
+    <div className=' bg-green-400 text-zinc-700 max-w-[400px] mx-auto rounded-md text-center p-5 mt-10 '>
+      <div className=' w-[200px] h-[200px] rounded-full mx-auto overflow-hidden '>
+        <img className=' block max-w-full ' src={avatar_url} alt='user image' />
       </div>
       <div>
         <a href={`https://github.com/${login}`}> {name || login} </a>

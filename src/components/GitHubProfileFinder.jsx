@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import User from './User';
 
@@ -28,6 +29,7 @@ const GitHubProfileFinder = () => {
     fetchGithubUserData();
   }, []);
 
+  // A loader when the data is loading from the api
   if (loading) {
     return (
       <h1 className=' text-2xl font-bold '>Loading data! Please wait...</h1>
@@ -35,7 +37,7 @@ const GitHubProfileFinder = () => {
   }
 
   return (
-    <div className=' min-h-dvh text-gray-50 bg-zinc-950'>
+    <div className=' min-h-dvh text-gray-50 bg-zinc-900'>
       <div className=' flex gap-2 items-center justify-center py-4'>
         <input
           className=' bg-gray-50 px-2 py-1 rounded-sm text-zinc-900 placeholder:text-sm'
@@ -45,7 +47,13 @@ const GitHubProfileFinder = () => {
           value={userName}
           onChange={(event) => setUserName(event.target.value)}
         />
-        <button onClick={handleSubmit}>Search</button>
+        <button
+          className=' bg-indigo-600 py-1 px-3 rounded-sm text-gray-50 '
+          type='submit'
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
       </div>
       {userDate !== null ? <User user={userDate} /> : null}
     </div>
