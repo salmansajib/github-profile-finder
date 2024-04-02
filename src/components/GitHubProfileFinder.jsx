@@ -14,11 +14,14 @@ const GitHubProfileFinder = () => {
     if (data) {
       setUserData(data);
       setLoading(false);
+      setUserName('');
     }
     console.log(data);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    fetchGithubUserData();
+  };
 
   // fetch the data when component mounts
   useEffect(() => {
@@ -32,10 +35,10 @@ const GitHubProfileFinder = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className=' min-h-dvh text-gray-50 bg-zinc-950'>
+      <div className=' flex gap-2 items-center justify-center py-4'>
         <input
-          className='border border-black placeholder:text-sm'
+          className=' bg-gray-50 px-2 py-1 rounded-sm text-zinc-900 placeholder:text-sm'
           type='text'
           name='search-by-username'
           placeholder='Search Github Username...'
