@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
+import User from './User';
 
 const GitHubProfileFinder = () => {
   const [userName, setUserName] = useState('salmansajib');
   const [userDate, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // fetch the github user data
   const fetchGithubUserData = async () => {
+    setLoading(true);
     const response = await fetch(`https://api.github.com/users/${userName}`);
     const data = await response.json();
-
+    if (data) {
+      setUserData(data);
+      setLoading(false);
+    }
     console.log(data);
   };
 
@@ -18,6 +24,12 @@ const GitHubProfileFinder = () => {
   useEffect(() => {
     fetchGithubUserData();
   }, []);
+
+  if (loading) {
+    return (
+      <h1 className=' text-2xl font-bold '>Loading data! Please wait...</h1>
+    );
+  }
 
   return (
     <div>
@@ -31,8 +43,8 @@ const GitHubProfileFinder = () => {
           onChange={(event) => setUserName(event.target.value)}
         />
         <button onClick={handleSubmit}>Search</button>
-        {/* <div> {userName} </div> */}
       </div>
+      {userDate !== null ? <User user={userDate} /> : null}
     </div>
   );
 };
