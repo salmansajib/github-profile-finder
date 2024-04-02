@@ -2,8 +2,22 @@ import { useEffect, useState } from 'react';
 
 const GitHubProfileFinder = () => {
   const [userName, setUserName] = useState('salmansajib');
+  const [userDate, setUserData] = useState(null);
+
+  // fetch the github user data
+  const fetchGithubUserData = async () => {
+    const response = await fetch(`https://api.github.com/users/${userName}`);
+    const data = await response.json();
+
+    console.log(data);
+  };
 
   const handleSubmit = () => {};
+
+  // fetch the data when component mounts
+  useEffect(() => {
+    fetchGithubUserData();
+  }, []);
 
   return (
     <div>
